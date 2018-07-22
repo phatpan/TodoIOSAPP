@@ -57,6 +57,10 @@
                                                 <constraint firstAttribute="trailing" secondItem="MW7-fm-jv5" secondAttribute="trailing" constant="5" id="yld-Iw-1kc"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkboxButton" destination="WpF-PR-Q0J" id="Eo3-XK-yIJ"/>
+                                            <outlet property="titleLabel" destination="jRS-qI-eAK" id="Bha-WA-dYb"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

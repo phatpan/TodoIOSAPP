@@ -26,9 +26,10 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "todoItemCell", for: indexPath)
-        cell.textLabel?.text = todo.item(at: indexPath.row).title
-        cell.accessoryType = todo.item(at: indexPath.row).isDone ? .checkmark : .none
+        let cell = tableView.dequeueReusableCell(withIdentifier: "todoItemCell", for: indexPath) as! TodoItemTableViewCell
+        let item = todo.item(at: indexPath.row)
+        cell.titleLabel.text = item.title
+        cell.checkboxButton.setImage(UIImage(named: item.isDone ? "check" : "uncheck"), for: .normal)
         return cell
     }
 

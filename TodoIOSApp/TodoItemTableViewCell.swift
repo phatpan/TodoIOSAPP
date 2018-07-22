@@ -9,4 +9,6 @@
 import UIKit
 
 class TodoItemTableViewCell: UITableViewCell {
+    @IBOutlet weak var checkboxButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
 }
