@@ -17,6 +17,7 @@
 		D5060CB221042B9900798997 /* TodoIOSAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5060CB121042B9900798997 /* TodoIOSAppUITests.swift */; };
 		D5060CC02104379600798997 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5060CBF2104379600798997 /* Todo.swift */; };
 		D5060CC22104464B00798997 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5060CC12104464B00798997 /* ItemDetailViewController.swift */; };
+		D5C23F7B2104708200227966 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C23F7A2104708200227966 /* TodoItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		D5060CB321042B9900798997 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5060CBF2104379600798997 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		D5060CC12104464B00798997 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
+		D5C23F7A2104708200227966 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		D5060C8D21042B9700798997 /* TodoIOSApp */ = {
 			isa = PBXGroup;
 			children = (
+				D5C23F792104706900227966 /* model */,
 				D5060C8E21042B9700798997 /* AppDelegate.swift */,
 				D5060C9021042B9700798997 /* ViewController.swift */,
 				D5060C9221042B9700798997 /* Main.storyboard */,
@@ -110,7 +113,6 @@
 				D5060C9A21042B9900798997 /* LaunchScreen.storyboard */,
 				D5060C9D21042B9900798997 /* Info.plist */,
 				D5060C9521042B9700798997 /* TodoIOSApp.xcdatamodeld */,
-				D5060CBF2104379600798997 /* Todo.swift */,
 				D5060CC12104464B00798997 /* ItemDetailViewController.swift */,
 			);
 			path = TodoIOSApp;
@@ -132,6 +134,15 @@
 				D5060CB321042B9900798997 /* Info.plist */,
 			);
 			path = TodoIOSAppUITests;
+			sourceTree = "<group>";
+		};
+		D5C23F792104706900227966 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				D5060CBF2104379600798997 /* Todo.swift */,
+				D5C23F7A2104708200227966 /* TodoItem.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +280,7 @@
 				D5060CC22104464B00798997 /* ItemDetailViewController.swift in Sources */,
 				D5060C9721042B9700798997 /* TodoIOSApp.xcdatamodeld in Sources */,
 				D5060C8F21042B9700798997 /* AppDelegate.swift in Sources */,
+				D5C23F7B2104708200227966 /* TodoItem.swift in Sources */,
 				D5060CC02104379600798997 /* Todo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

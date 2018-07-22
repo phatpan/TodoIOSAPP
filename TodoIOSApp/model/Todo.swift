@@ -30,17 +30,3 @@ class Todo {
         return items.index { $0 === item }
     }
 }
-
-class TodoItem {
-    var title: String
-    var isDone: Bool
-
-    init(title: String, isDone: Bool = false) {
-        self.title = title
-        self.isDone = isDone
-    }
-
-    func toggleIsDone() {
-        isDone = !isDone
-    }
-}
