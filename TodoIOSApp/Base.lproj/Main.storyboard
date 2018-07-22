@@ -59,10 +59,13 @@
                     <navigationItem key="navigationItem" title="Todo" id="1Xy-uh-0KT">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RGs-vc-URk">
                             <connections>
-                                <segue destination="JAC-Lu-yWW" kind="presentation" id="6b1-hI-d1r"/>
+                                <segue destination="JAC-Lu-yWW" kind="presentation" identifier="openAddPage" id="6b1-hI-d1r"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="TdD-1S-tmp" id="wq5-11-Mp4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -128,6 +131,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="isDoneSwitch" destination="FNX-bR-7na" id="ZsX-Nk-QLK"/>
+                        <outlet property="titleTextField" destination="aeb-1a-Thv" id="TdO-rf-keQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezT-iQ-et7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

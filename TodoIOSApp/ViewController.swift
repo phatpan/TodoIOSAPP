@@ -8,8 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddTodoViewControllerDelegate {
     var todo = Todo()
+    
+    @IBOutlet weak var tableView: UITableView!
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todo.totalItem
     }
@@ -24,12 +27,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+
+    func addTodoViewController(controller: AddTodoViewController, didAdd item: TodoItem) {
+        todo.add(item: item)
+        if let index = todo.index(of: item) {
+            tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+        }
+        
+        controller.dismiss(animated: true, completion: nil)
+    }
+
+    func addTodoViewControllerDidCancel(controller: AddTodoViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         todo.add(item: TodoItem(title: "Angular"))
         todo.add(item: TodoItem(title: "React"))
         todo.add(item: TodoItem(title: "Vue", isDone: true))
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openAddPage" {
+            let navigationController = segue.destination as? UINavigationController
+            let controller = navigationController?.topViewController as? AddTodoViewController
+            controller?.delegate = self
+        }
     }
 
 }

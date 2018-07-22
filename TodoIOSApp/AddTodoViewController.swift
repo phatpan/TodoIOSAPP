@@ -7,18 +7,28 @@
 //
 
 import UIKit
+protocol AddTodoViewControllerDelegate: class {
+    func addTodoViewController(controller: AddTodoViewController, didAdd item: TodoItem)
+    func addTodoViewControllerDidCancel(controller: AddTodoViewController)
+}
 
 class AddTodoViewController: UIViewController {
+    weak var delegate: AddTodoViewControllerDelegate?
 
+    @IBOutlet weak var isDoneSwitch: UISwitch!
+    @IBOutlet weak var titleTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     @IBAction func cancelButtonDidtap(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        delegate?.addTodoViewControllerDidCancel(controller: self)
     }
 
     @IBAction func doneButtonDidtab() {
-        dismiss(animated: true, completion: nil)
+        if let title = titleTextField.text, !title.isEmpty {
+            delegate?.addTodoViewController(controller: self, didAdd: TodoItem(title: title, isDone: isDoneSwitch.isOn))
+        }
     }
 }
