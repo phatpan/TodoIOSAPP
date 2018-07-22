@@ -7,14 +7,14 @@
 //
 
 import UIKit
-protocol AddTodoViewControllerDelegate: class {
-    func addTodoViewController(controller: AddTodoViewController, didAdd item: TodoItem)
-    func addTodoViewController(controller: AddTodoViewController, didEdit item: TodoItem)
-    func addTodoViewControllerDidCancel(controller: AddTodoViewController)
+protocol ItemDetailControllerDelegate: class {
+    func itemDetailViewController(controller: ItemDetailViewController, didAdd item: TodoItem)
+    func itemDetailViewController(controller: ItemDetailViewController, didEdit item: TodoItem)
+    func itemDetailViewControllerDidCancel(controller: ItemDetailViewController)
 }
 
-class AddTodoViewController: UIViewController {
-    weak var delegate: AddTodoViewControllerDelegate?
+class ItemDetailViewController: UIViewController {
+    weak var delegate: ItemDetailControllerDelegate?
     var todoItem: TodoItem?
     @IBOutlet weak var isDoneSwitch: UISwitch!
     @IBOutlet weak var titleTextField: UITextField!
@@ -36,7 +36,7 @@ class AddTodoViewController: UIViewController {
     }
 
     @IBAction func cancelButtonDidtap(_ sender: UIBarButtonItem) {
-        delegate?.addTodoViewControllerDidCancel(controller: self)
+        delegate?.itemDetailViewControllerDidCancel(controller: self)
     }
 
     @IBAction func doneButtonDidtab() {
@@ -44,9 +44,9 @@ class AddTodoViewController: UIViewController {
             if let item = todoItem {
                 item.title = title
                 item.isDone = isDone
-                delegate?.addTodoViewController(controller: self, didEdit: item)
+                delegate?.itemDetailViewController(controller: self, didEdit: item)
             } else {
-                delegate?.addTodoViewController(controller: self, didAdd: TodoItem(title: title, isDone: isDone))
+                delegate?.itemDetailViewController(controller: self, didAdd: TodoItem(title: title, isDone: isDone))
             }
         }
     }

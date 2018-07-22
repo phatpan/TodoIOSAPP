@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddTodoViewControllerDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemDetailControllerDelegate {
     var todo = Todo()
     
     @IBOutlet weak var tableView: UITableView!
@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
-    func addTodoViewController(controller: AddTodoViewController, didAdd item: TodoItem) {
+    func itemDetailViewController(controller: ItemDetailViewController, didAdd item: TodoItem) {
         todo.add(item: item)
         if let index = todo.index(of: item) {
             tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
@@ -45,7 +45,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         controller.dismiss(animated: true, completion: nil)
     }
 
-    func addTodoViewController(controller: AddTodoViewController, didEdit item: TodoItem) {
+    func itemDetailViewController(controller: ItemDetailViewController, didEdit item: TodoItem) {
         if let index = todo.index(of: item) {
             tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         }
@@ -53,7 +53,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         controller.dismiss(animated: true, completion: nil)
     }
 
-    func addTodoViewControllerDidCancel(controller: AddTodoViewController) {
+    func itemDetailViewControllerDidCancel(controller: ItemDetailViewController) {
         controller.dismiss(animated: true, completion: nil)
     }
     
@@ -67,11 +67,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openAddPage" {
             let navigationController = segue.destination as? UINavigationController
-            let controller = navigationController?.topViewController as? AddTodoViewController
+            let controller = navigationController?.topViewController as? ItemDetailViewController
             controller?.delegate = self
         } else if segue.identifier == "openEditPage" {
             let navigationController = segue.destination as? UINavigationController
-            let controller = navigationController?.topViewController as? AddTodoViewController
+            let controller = navigationController?.topViewController as? ItemDetailViewController
             controller?.todoItem = sender as? TodoItem
             controller?.delegate = self
         }

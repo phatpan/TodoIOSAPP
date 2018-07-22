@@ -16,7 +16,7 @@
 		D5060CA721042B9900798997 /* TodoIOSAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5060CA621042B9900798997 /* TodoIOSAppTests.swift */; };
 		D5060CB221042B9900798997 /* TodoIOSAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5060CB121042B9900798997 /* TodoIOSAppUITests.swift */; };
 		D5060CC02104379600798997 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5060CBF2104379600798997 /* Todo.swift */; };
-		D5060CC22104464B00798997 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5060CC12104464B00798997 /* AddTodoViewController.swift */; };
+		D5060CC22104464B00798997 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5060CC12104464B00798997 /* ItemDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,7 @@
 		D5060CB121042B9900798997 /* TodoIOSAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoIOSAppUITests.swift; sourceTree = "<group>"; };
 		D5060CB321042B9900798997 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5060CBF2104379600798997 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
-		D5060CC12104464B00798997 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
+		D5060CC12104464B00798997 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +111,7 @@
 				D5060C9D21042B9900798997 /* Info.plist */,
 				D5060C9521042B9700798997 /* TodoIOSApp.xcdatamodeld */,
 				D5060CBF2104379600798997 /* Todo.swift */,
-				D5060CC12104464B00798997 /* AddTodoViewController.swift */,
+				D5060CC12104464B00798997 /* ItemDetailViewController.swift */,
 			);
 			path = TodoIOSApp;
 			sourceTree = "<group>";
@@ -266,7 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5060C9121042B9700798997 /* ViewController.swift in Sources */,
-				D5060CC22104464B00798997 /* AddTodoViewController.swift in Sources */,
+				D5060CC22104464B00798997 /* ItemDetailViewController.swift in Sources */,
 				D5060C9721042B9700798997 /* TodoIOSApp.xcdatamodeld in Sources */,
 				D5060C8F21042B9700798997 /* AppDelegate.swift in Sources */,
 				D5060CC02104379600798997 /* Todo.swift in Sources */,
