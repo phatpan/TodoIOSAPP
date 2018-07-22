@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemDetailControllerDelegate {
+class TodoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemDetailControllerDelegate, TodoItemTableViewCellDelegate {
     var todo = Todo()
     
     @IBOutlet weak var tableView: UITableView!
@@ -29,6 +29,7 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoItemCell", for: indexPath) as! TodoItemTableViewCell
         let item = todo.item(at: indexPath.row)
         cell.titleLabel.text = item.title
+        cell.delegate = self
         cell.checkboxButton.setImage(UIImage(named: item.isDone ? "check" : "uncheck"), for: .normal)
         return cell
     }
@@ -65,6 +66,13 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
 
     func itemDetailViewControllerDidCancel(controller: ItemDetailViewController) {
         controller.dismiss(animated: true, completion: nil)
+    }
+
+    func todoItemViewCellCheckboxButtonDidtap(cell: TodoItemTableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            todo.item(at: indexPath.row).toggleIsDone()
+            tableView.reloadData()
+        }
     }
 
     //MARK - Navigation

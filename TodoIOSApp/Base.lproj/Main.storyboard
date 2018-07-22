@@ -40,6 +40,9 @@
                                                                 <constraint firstAttribute="width" secondItem="WpF-PR-Q0J" secondAttribute="height" multiplier="1:1" id="vCL-km-jmP"/>
                                                             </constraints>
                                                             <state key="normal" image="uncheck"/>
+                                                            <connections>
+                                                                <action selector="checkboxDidtap:" destination="wcO-Hs-KyJ" eventType="touchUpInside" id="byE-wY-k4D"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRS-qI-eAK">
                                                             <rect key="frame" x="43" y="0.0" width="279" height="35"/>
