@@ -79,8 +79,16 @@
                         <viewLayoutGuide key="safeArea" id="43V-ud-uIx"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Item" id="Jag-ec-Kfh">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2tf-UN-05S"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="G5T-He-Zbh"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2tf-UN-05S">
+                            <connections>
+                                <action selector="cancelButtonDidtap:" destination="f0t-uD-FJO" id="bzH-qT-HCI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="G5T-He-Zbh">
+                            <connections>
+                                <action selector="doneButtonDidtab" destination="f0t-uD-FJO" id="sDE-T4-5Gb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezT-iQ-et7" userLabel="First Responder" sceneMemberID="firstResponder"/>
