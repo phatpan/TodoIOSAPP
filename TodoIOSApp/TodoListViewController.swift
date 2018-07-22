@@ -15,9 +15,6 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        todo.add(item: TodoItem(title: "Angular"))
-        todo.add(item: TodoItem(title: "React"))
-        todo.add(item: TodoItem(title: "Vue", isDone: true))
     }
 
     //MARK: - TableViewDataSource
