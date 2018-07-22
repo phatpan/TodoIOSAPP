@@ -22,6 +22,11 @@ class AddTodoViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+         titleTextField.becomeFirstResponder()
+    }
+
     @IBAction func cancelButtonDidtap(_ sender: UIBarButtonItem) {
         delegate?.addTodoViewControllerDidCancel(controller: self)
     }
