@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Todo {
+class Todo:Codable {
     private var items = [TodoItem]()
     var totalItem: Int {
         return items.count
