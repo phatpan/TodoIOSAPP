@@ -75,7 +75,45 @@
                     <view key="view" contentMode="scaleToFill" id="02s-bE-I0X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="8r0-2X-7aC">
+                                <rect key="frame" x="15" y="84" width="345" height="65"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aeb-1a-Thv">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jWg-xB-1ql">
+                                        <rect key="frame" x="0.0" y="34" width="345" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is done" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byO-af-CAV">
+                                                <rect key="frame" x="0.0" y="0.0" width="296" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FNX-bR-7na">
+                                                <rect key="frame" x="296" y="0.0" width="51" height="31"/>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="aeb-1a-Thv" firstAttribute="leading" secondItem="8r0-2X-7aC" secondAttribute="leading" id="diM-aR-nGK"/>
+                                    <constraint firstItem="jWg-xB-1ql" firstAttribute="leading" secondItem="8r0-2X-7aC" secondAttribute="leading" id="hg5-x1-ShK"/>
+                                    <constraint firstAttribute="trailing" secondItem="jWg-xB-1ql" secondAttribute="trailing" id="izV-Ol-cIP"/>
+                                    <constraint firstAttribute="trailing" secondItem="aeb-1a-Thv" secondAttribute="trailing" id="lwS-5I-vid"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8r0-2X-7aC" firstAttribute="top" secondItem="43V-ud-uIx" secondAttribute="top" constant="20" id="vAv-ey-DCD"/>
+                            <constraint firstItem="43V-ud-uIx" firstAttribute="trailing" secondItem="8r0-2X-7aC" secondAttribute="trailing" constant="15" id="wOG-L9-gAx"/>
+                            <constraint firstItem="8r0-2X-7aC" firstAttribute="leading" secondItem="43V-ud-uIx" secondAttribute="leading" constant="15" id="xeD-sy-7fF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="43V-ud-uIx"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Item" id="Jag-ec-Kfh">
