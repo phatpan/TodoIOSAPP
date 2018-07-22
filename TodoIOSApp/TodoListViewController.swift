@@ -8,19 +8,26 @@
 
 import UIKit
 
-class TodoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemDetailControllerDelegate, TodoItemTableViewCellDelegate {
+class TodoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemDetailControllerDelegate, TodoItemTableViewCellDelegate, UITableViewDragDelegate, UITableViewDropDelegate {
     var todo = Todo()
     
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dragDelegate = self
+        tableView.dragInteractionEnabled = true
+        tableView.dropDelegate = self
+        loadData()
+    }
+
+    func loadData() {
         do {
             let fileManager = FileManager.default
             var destinationURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             destinationURL.appendPathComponent("todo")
             destinationURL.appendPathExtension("plist")
-            
+
             print(destinationURL.path)
 
             if fileManager.fileExists(atPath: destinationURL.path) {
@@ -54,6 +61,21 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
 
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        return [UIDragItem(itemProvider: NSItemProvider())]
+    }
+
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+    }
+
+    func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
+        return session.localDragSession != nil
+    }
+
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+    }
+
     //MARK: - TableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todo.totalItem
@@ -71,6 +93,11 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "openEditPage", sender: todo.item(at: indexPath.row))
+    }
+
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        todo.move(from: sourceIndexPath.row, to: destinationIndexPath.row)
+        saveData()
     }
 
     //MARK - TableViewDelegate

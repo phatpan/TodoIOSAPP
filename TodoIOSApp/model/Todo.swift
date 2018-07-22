@@ -29,4 +29,9 @@ class Todo:Codable {
     func index(of item: TodoItem) -> Int? {
         return items.index { $0 === item }
     }
+
+    func move(from sourceIndex: Int, to destinationIndex: Int) {
+        let item = items.remove(at: sourceIndex)
+        items.insert(item, at: destinationIndex)
+    }
 }
