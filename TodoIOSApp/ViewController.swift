@@ -26,6 +26,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "openEditPage", sender: todo.item(at: indexPath.row))
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            todo.remove(index: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 
     func addTodoViewController(controller: AddTodoViewController, didAdd item: TodoItem) {
@@ -34,6 +42,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         }
         
+        controller.dismiss(animated: true, completion: nil)
+    }
+
+    func addTodoViewController(controller: AddTodoViewController, didEdit item: TodoItem) {
+        if let index = todo.index(of: item) {
+            tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+        }
+
         controller.dismiss(animated: true, completion: nil)
     }
 
@@ -52,6 +68,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if segue.identifier == "openAddPage" {
             let navigationController = segue.destination as? UINavigationController
             let controller = navigationController?.topViewController as? AddTodoViewController
+            controller?.delegate = self
+        } else if segue.identifier == "openEditPage" {
+            let navigationController = segue.destination as? UINavigationController
+            let controller = navigationController?.topViewController as? AddTodoViewController
+            controller?.todoItem = sender as? TodoItem
             controller?.delegate = self
         }
     }

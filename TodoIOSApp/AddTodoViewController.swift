@@ -9,17 +9,25 @@
 import UIKit
 protocol AddTodoViewControllerDelegate: class {
     func addTodoViewController(controller: AddTodoViewController, didAdd item: TodoItem)
+    func addTodoViewController(controller: AddTodoViewController, didEdit item: TodoItem)
     func addTodoViewControllerDidCancel(controller: AddTodoViewController)
 }
 
 class AddTodoViewController: UIViewController {
     weak var delegate: AddTodoViewControllerDelegate?
-
+    var todoItem: TodoItem?
     @IBOutlet weak var isDoneSwitch: UISwitch!
     @IBOutlet weak var titleTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let item = todoItem {
+            titleTextField.text = item.title
+            isDoneSwitch.isOn = item.isDone
+            title = "Edit Item"
+        } else {
+            title = "Add New Item"
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -32,8 +40,14 @@ class AddTodoViewController: UIViewController {
     }
 
     @IBAction func doneButtonDidtab() {
-        if let title = titleTextField.text, !title.isEmpty {
-            delegate?.addTodoViewController(controller: self, didAdd: TodoItem(title: title, isDone: isDoneSwitch.isOn))
+        if let title = titleTextField.text, let isDone = isDoneSwitch?.isOn, !title.isEmpty {
+            if let item = todoItem {
+                item.title = title
+                item.isDone = isDone
+                delegate?.addTodoViewController(controller: self, didEdit: item)
+            } else {
+                delegate?.addTodoViewController(controller: self, didAdd: TodoItem(title: title, isDone: isDone))
+            }
         }
     }
 }
