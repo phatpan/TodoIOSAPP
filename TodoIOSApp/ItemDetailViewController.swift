@@ -18,7 +18,9 @@ class ItemDetailViewController: UIViewController {
     var todoItem: TodoItem?
     @IBOutlet weak var isDoneSwitch: UISwitch!
     @IBOutlet weak var titleTextField: UITextField!
-    
+    var isInEditMode: Bool {
+        return todoItem != nil
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if let item = todoItem {

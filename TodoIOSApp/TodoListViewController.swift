@@ -60,12 +60,15 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
         if let index = todo.index(of: item) {
             tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         }
-
-        controller.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
 
     func itemDetailViewControllerDidCancel(controller: ItemDetailViewController) {
-        controller.dismiss(animated: true, completion: nil)
+        if controller.isInEditMode {
+            navigationController?.popViewController(animated: true)
+        } else {
+             controller.dismiss(animated: true, completion: nil)
+        }
     }
 
     func todoItemViewCellCheckboxButtonDidtap(cell: TodoItemTableViewCell) {
@@ -78,14 +81,12 @@ class TodoListViewController: UIViewController, UITableViewDataSource, UITableVi
     //MARK - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openAddPage" {
-            let navigationController = segue.destination as? UINavigationController
-            let controller = navigationController?.topViewController as? ItemDetailViewController
-            controller?.delegate = self
+            let con = segue.destination as? ItemDetailViewController
+            con?.delegate = self
         } else if segue.identifier == "openEditPage" {
-            let navigationController = segue.destination as? UINavigationController
-            let controller = navigationController?.topViewController as? ItemDetailViewController
-            controller?.todoItem = sender as? TodoItem
-            controller?.delegate = self
+            let con = segue.destination as? ItemDetailViewController
+            con?.delegate = self
+            con?.todoItem = sender as? TodoItem
         }
     }
 

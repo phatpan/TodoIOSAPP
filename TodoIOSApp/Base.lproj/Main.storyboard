@@ -82,15 +82,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Todo" id="1Xy-uh-0KT">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RGs-vc-URk">
-                            <connections>
-                                <segue destination="JAC-Lu-yWW" kind="presentation" identifier="openAddPage" id="6b1-hI-d1r"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RGs-vc-URk"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="TdD-1S-tmp" id="wq5-11-Mp4"/>
-                        <segue destination="JAC-Lu-yWW" kind="presentation" identifier="openEditPage" id="HyT-7L-47D"/>
+                        <segue destination="f0t-uD-FJO" kind="show" identifier="openEditPage" id="Otv-Mr-HAk"/>
+                        <segue destination="JAC-Lu-yWW" kind="presentation" identifier="openAddPage" id="auq-ma-bdU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -200,13 +197,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9Y-ru-Yu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2090" y="34"/>
+            <point key="canvasLocation" x="1937" y="422"/>
         </scene>
     </scenes>
     <resources>
         <image name="uncheck" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HyT-7L-47D"/>
+        <segue reference="Otv-Mr-HAk"/>
     </inferredMetricsTieBreakers>
 </document>
