@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var todo = Todo()
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todo.totalItem
@@ -19,6 +19,10 @@ class ViewController: UIViewController, UITableViewDataSource {
         cell.textLabel?.text = todo.item(at: indexPath.row).title
         cell.accessoryType = todo.item(at: indexPath.row).isDone ? .checkmark : .none
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func viewDidLoad() {
