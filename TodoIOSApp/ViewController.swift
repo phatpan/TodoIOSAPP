@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoItemCell", for: indexPath)
         cell.textLabel?.text = todo.item(at: indexPath.row).title
+        cell.accessoryType = todo.item(at: indexPath.row).isDone ? .checkmark : .none
         return cell
     }
     
@@ -24,7 +25,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         todo.add(item: TodoItem(title: "Angular"))
         todo.add(item: TodoItem(title: "React"))
-        todo.add(item: TodoItem(title: "Vue"))
+        todo.add(item: TodoItem(title: "Vue", isDone: true))
     }
 
 }
